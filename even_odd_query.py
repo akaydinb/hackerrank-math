@@ -19,13 +19,17 @@ def solve(arr, queries):
     return_array = [ ];
 
     for query1 in queries:
-        # 2^0'da base çift olmasina ragmen sonuc tek olmasi asagidaki OR kontrol ediliyor
-        # ama yine de atladigim istisnai bir durum olmali.!
-        if((arr[query1[0] - 1] % 2 != 0) or (arr[query1[0] - 1] == 2 and arr[query1[0]] == 0)):
+        # States: 
+        # 1- Normal state: Base even => even; Base odd => odd
+        # 2- If query items are not equal (x != y) and next item is zero then Odd (n^0 = 1)
+        # 3- If query items are equal the above check should never be run, because n^1 = n, 
+        #    in case n is even but next number is zero, it returns Odd which is wrong. 
+        if(arr[query1[0] - 1] & 1):
+            return_array.append("Odd");
+        elif((query1[0] != query1[1]) and arr[query1[0]] == 0):
             return_array.append("Odd");
         else:
             return_array.append("Even");
-    
     return return_array;
 
 if __name__ == '__main__':

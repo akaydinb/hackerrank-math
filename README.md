@@ -1,5 +1,5 @@
-# hackerrank-bash
-Solutions of bash exercises in hackerrank
+# hackerrank-math
+Solutions of Math exercises in hackerrank
 
 === What is hackerrank? ===
 
